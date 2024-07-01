@@ -27,7 +27,7 @@ pipelines:
                 - exec:
                     #terraform apply -var-file=env-dev/main.tfvars -auto-approve
                     command: terraform
-                    arguments: [ "apply", "-auto-approve" ]
+                    arguments: ["apply", "-auto-approve"]
 
       - QA:
           fetch_materials: true
