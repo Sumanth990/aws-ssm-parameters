@@ -1,0 +1,75 @@
+format_version: 10
+pipelines:
+  parameter-store:
+    group: defaultGroup
+    label_template: ${COUNT}
+    lock_behavior: none
+    display_order: -1
+    materials:
+      parameter-store:
+        git: https://github.com/Sumanth990/aws-ssm-parameters.git
+        shallow_clone: false
+        auto_update: true
+        branch: main
+    stages:
+      - DEV:
+          fetch_materials: true
+          approval:
+            type: manual
+          jobs:
+            deployment:
+              timeout: 0
+              tasks:
+                - exec:
+                    #terraform init -backend-config=env-dev/state.tfvars
+                    command: terraform
+                    arguments: ["init"]
+                - exec:
+                    #terraform apply -var-file=env-dev/main.tfvars -auto-approve
+                    command: terraform
+                    arguments: [ "apply", "-auto-approve" ]
+
+      - QA:
+          fetch_materials: true
+          approval:
+            type: manual
+            allow_only_on_success: true
+          jobs:
+            deployment:
+              timeout: 0
+              tasks:
+                - exec:
+                    command: ls
+                    arguments:
+                      - -l
+                      - -A
+
+      - UAT:
+          fetch_materials: true
+          approval:
+            type: manual
+            allow_only_on_success: true
+          jobs:
+            deployment:
+              timeout: 0
+              tasks:
+                - exec:
+                    command: ls
+                    arguments:
+                      - -l
+                      - -A
+
+      - PROD:
+          fetch_materials: true
+          approval:
+            type: manual
+            allow_only_on_success: true
+          jobs:
+            deployment:
+              timeout: 0
+              tasks:
+                - exec:
+                    command: ls
+                    arguments:
+                      - -l
+                      - -A
