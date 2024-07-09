@@ -5,7 +5,7 @@ variable "key_id" {
 variable "parameters" {
   default = {
     "dev.expense.rds.username" = "admin1"
-    "dev.expense.rds.endpoint" = "dev-expense-rds.cjoiygk6a2yg.us-east-1.rds.amazonaws.com"
+    "dev.expense.rds.endpoint" = "dev-expense-rds.cpwwmoo0kb7j.us-east-1.rds.amazonaws.com"
     "dev.expense.frontend.backend_endpoint" = "https://backend-dev.aquireawsdevops.online/"
   }
 }
