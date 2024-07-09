@@ -1,5 +1,5 @@
 variable "key_id" {
-  default = "arn:aws:kms:us-east-1:992382357886:key/22bbbe40-97dd-4395-9d24-7953d9782528"
+  default = "arn:aws:kms:us-east-1:767398130568:key/8f8138ff-f57f-49c9-90db-f99bf7dbdc08"
 }
 
 variable "parameters" {
